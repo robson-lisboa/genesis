@@ -1,0 +1,831 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Projeto Gênesis - Gamified Programming Learning Platform API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: profile
+    description: Student profile and stats
+  - name: cities
+    description: Learning world cities
+  - name: missions
+    description: Challenges and missions
+  - name: skills
+    description: Skill tree
+  - name: achievements
+    description: Badges and achievements
+  - name: leaderboard
+    description: Global ranking
+  - name: dashboard
+    description: Dashboard summaries and analytics
+  - name: daily
+    description: Daily challenges and streaks
+  - name: ai
+    description: AI Professor and Mentor
+
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /profile:
+    get:
+      operationId: getProfile
+      tags: [profile]
+      summary: Get current student profile
+      responses:
+        "200":
+          description: Student profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StudentProfile"
+    patch:
+      operationId: updateProfile
+      tags: [profile]
+      summary: Update student profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StudentProfileUpdate"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StudentProfile"
+
+  /cities:
+    get:
+      operationId: listCities
+      tags: [cities]
+      summary: List all learning world cities
+      responses:
+        "200":
+          description: List of cities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/City"
+
+  /cities/{cityId}:
+    get:
+      operationId: getCity
+      tags: [cities]
+      summary: Get city details with missions
+      parameters:
+        - name: cityId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: City detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CityDetail"
+        "404":
+          description: City not found
+
+  /cities/{cityId}/missions:
+    get:
+      operationId: listCityMissions
+      tags: [missions]
+      summary: List missions for a city
+      parameters:
+        - name: cityId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of missions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Mission"
+
+  /missions/{missionId}:
+    get:
+      operationId: getMission
+      tags: [missions]
+      summary: Get mission detail with challenge
+      parameters:
+        - name: missionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Mission detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MissionDetail"
+        "404":
+          description: Mission not found
+
+  /missions/{missionId}/submit:
+    post:
+      operationId: submitMission
+      tags: [missions]
+      summary: Submit code solution for a mission
+      parameters:
+        - name: missionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MissionSubmission"
+      responses:
+        "200":
+          description: Submission result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionResult"
+
+  /missions/{missionId}/hint:
+    post:
+      operationId: requestMissionHint
+      tags: [missions]
+      summary: Request next progressive hint for a mission
+      parameters:
+        - name: missionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HintRequest"
+      responses:
+        "200":
+          description: Hint response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HintResponse"
+
+  /skills:
+    get:
+      operationId: getSkillTree
+      tags: [skills]
+      summary: Get the full skill tree with unlock status
+      responses:
+        "200":
+          description: Skill tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Skill"
+
+  /skills/{skillId}/unlock:
+    post:
+      operationId: unlockSkill
+      tags: [skills]
+      summary: Unlock a skill node
+      parameters:
+        - name: skillId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Skill unlocked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Skill"
+        "400":
+          description: Not enough XP or prerequisites not met
+
+  /achievements:
+    get:
+      operationId: listAchievements
+      tags: [achievements]
+      summary: List all achievements with earned status
+      responses:
+        "200":
+          description: Achievements list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Achievement"
+
+  /leaderboard:
+    get:
+      operationId: getLeaderboard
+      tags: [leaderboard]
+      summary: Get global leaderboard
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Leaderboard entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LeaderboardEntry"
+
+  /dashboard/stats:
+    get:
+      operationId: getDashboardStats
+      tags: [dashboard]
+      summary: Get aggregated dashboard stats for the current student
+      responses:
+        "200":
+          description: Dashboard stats summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+  /dashboard/activity:
+    get:
+      operationId: getActivityFeed
+      tags: [dashboard]
+      summary: Recent activity timeline feed
+      responses:
+        "200":
+          description: Activity feed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ActivityEvent"
+
+  /daily-challenge:
+    get:
+      operationId: getDailyChallenge
+      tags: [daily]
+      summary: Get today's daily challenge
+      responses:
+        "200":
+          description: Daily challenge
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DailyChallenge"
+
+  /ai/chat:
+    post:
+      operationId: sendAiMessage
+      tags: [ai]
+      summary: Send a message to the AI Professor/Mentor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AiMessageInput"
+      responses:
+        "200":
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AiMessageResponse"
+
+  /ai/chat/history:
+    get:
+      operationId: getAiChatHistory
+      tags: [ai]
+      summary: Get AI chat history
+      responses:
+        "200":
+          description: Chat history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AiChatMessage"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+
+    StudentProfile:
+      type: object
+      required: [id, username, level, xp, xpToNextLevel, title, streak, coins, rank, avatarUrl, createdAt]
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        level:
+          type: integer
+        xp:
+          type: integer
+        xpToNextLevel:
+          type: integer
+        title:
+          type: string
+        streak:
+          type: integer
+        coins:
+          type: integer
+        rank:
+          type: integer
+        avatarUrl:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    StudentProfileUpdate:
+      type: object
+      properties:
+        username:
+          type: string
+        bio:
+          type: string
+        avatarUrl:
+          type: string
+
+    City:
+      type: object
+      required: [id, name, description, theme, icon, totalMissions, completedMissions, isUnlocked, xpReward, difficulty]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        theme:
+          type: string
+        icon:
+          type: string
+        totalMissions:
+          type: integer
+        completedMissions:
+          type: integer
+        isUnlocked:
+          type: boolean
+        xpReward:
+          type: integer
+        difficulty:
+          type: string
+        position:
+          $ref: "#/components/schemas/CityPosition"
+
+    CityPosition:
+      type: object
+      required: [x, y]
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+
+    CityDetail:
+      type: object
+      required: [id, name, description, theme, icon, totalMissions, completedMissions, isUnlocked, xpReward, difficulty, missions, boss]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        theme:
+          type: string
+        icon:
+          type: string
+        totalMissions:
+          type: integer
+        completedMissions:
+          type: integer
+        isUnlocked:
+          type: boolean
+        xpReward:
+          type: integer
+        difficulty:
+          type: string
+        missions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Mission"
+        boss:
+          $ref: "#/components/schemas/CityBoss"
+
+    CityBoss:
+      type: object
+      required: [name, description, isDefeated]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isDefeated:
+          type: boolean
+
+    Mission:
+      type: object
+      required: [id, cityId, title, description, type, xpReward, coinReward, isCompleted, isUnlocked, order, difficulty]
+      properties:
+        id:
+          type: integer
+        cityId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        xpReward:
+          type: integer
+        coinReward:
+          type: integer
+        isCompleted:
+          type: boolean
+        isUnlocked:
+          type: boolean
+        order:
+          type: integer
+        difficulty:
+          type: string
+        estimatedMinutes:
+          type: ["integer", "null"]
+
+    MissionDetail:
+      type: object
+      required: [id, cityId, title, description, type, xpReward, coinReward, isCompleted, isUnlocked, order, difficulty, challenge]
+      properties:
+        id:
+          type: integer
+        cityId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        xpReward:
+          type: integer
+        coinReward:
+          type: integer
+        isCompleted:
+          type: boolean
+        isUnlocked:
+          type: boolean
+        order:
+          type: integer
+        difficulty:
+          type: string
+        estimatedMinutes:
+          type: ["integer", "null"]
+        challenge:
+          $ref: "#/components/schemas/Challenge"
+
+    Challenge:
+      type: object
+      required: [instructions, starterCode, language, testCases]
+      properties:
+        instructions:
+          type: string
+        starterCode:
+          type: string
+        language:
+          type: string
+        testCases:
+          type: array
+          items:
+            $ref: "#/components/schemas/TestCase"
+        hints:
+          type: array
+          items:
+            type: string
+
+    TestCase:
+      type: object
+      required: [input, expectedOutput, description]
+      properties:
+        input:
+          type: string
+        expectedOutput:
+          type: string
+        description:
+          type: string
+
+    MissionSubmission:
+      type: object
+      required: [code, language]
+      properties:
+        code:
+          type: string
+        language:
+          type: string
+
+    SubmissionResult:
+      type: object
+      required: [success, xpEarned, coinEarned, testsPassed, totalTests, feedback]
+      properties:
+        success:
+          type: boolean
+        xpEarned:
+          type: integer
+        coinEarned:
+          type: integer
+        testsPassed:
+          type: integer
+        totalTests:
+          type: integer
+        feedback:
+          type: string
+        newAchievements:
+          type: array
+          items:
+            $ref: "#/components/schemas/Achievement"
+        leveledUp:
+          type: boolean
+        newLevel:
+          type: ["integer", "null"]
+
+    HintRequest:
+      type: object
+      required: [currentHintLevel]
+      properties:
+        currentHintLevel:
+          type: integer
+
+    HintResponse:
+      type: object
+      required: [hint, hintLevel, hasMoreHints]
+      properties:
+        hint:
+          type: string
+        hintLevel:
+          type: integer
+        hasMoreHints:
+          type: boolean
+
+    Skill:
+      type: object
+      required: [id, name, description, category, xpCost, isUnlocked, prerequisites, icon]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        xpCost:
+          type: integer
+        isUnlocked:
+          type: boolean
+        prerequisites:
+          type: array
+          items:
+            type: integer
+        icon:
+          type: string
+        tier:
+          type: integer
+
+    Achievement:
+      type: object
+      required: [id, title, description, icon, category, xpReward, isEarned, rarity]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        category:
+          type: string
+        xpReward:
+          type: integer
+        isEarned:
+          type: boolean
+        rarity:
+          type: string
+        earnedAt:
+          type: ["string", "null"]
+
+    LeaderboardEntry:
+      type: object
+      required: [rank, studentId, username, level, xp, title, avatarUrl, streak]
+      properties:
+        rank:
+          type: integer
+        studentId:
+          type: integer
+        username:
+          type: string
+        level:
+          type: integer
+        xp:
+          type: integer
+        title:
+          type: string
+        avatarUrl:
+          type: ["string", "null"]
+        streak:
+          type: integer
+
+    DashboardStats:
+      type: object
+      required: [totalXp, xpThisWeek, citiesCompleted, totalCities, missionsCompleted, totalMissions, currentStreak, longestStreak, achievementsEarned, totalAchievements, globalRank, skillsUnlocked, hoursThisWeek, accuracyRate]
+      properties:
+        totalXp:
+          type: integer
+        xpThisWeek:
+          type: integer
+        citiesCompleted:
+          type: integer
+        totalCities:
+          type: integer
+        missionsCompleted:
+          type: integer
+        totalMissions:
+          type: integer
+        currentStreak:
+          type: integer
+        longestStreak:
+          type: integer
+        achievementsEarned:
+          type: integer
+        totalAchievements:
+          type: integer
+        globalRank:
+          type: integer
+        skillsUnlocked:
+          type: integer
+        hoursThisWeek:
+          type: number
+        accuracyRate:
+          type: number
+        xpHistory:
+          type: array
+          items:
+            $ref: "#/components/schemas/XpHistoryPoint"
+        categoryStrengths:
+          type: array
+          items:
+            $ref: "#/components/schemas/CategoryStrength"
+
+    XpHistoryPoint:
+      type: object
+      required: [date, xp]
+      properties:
+        date:
+          type: string
+        xp:
+          type: integer
+
+    CategoryStrength:
+      type: object
+      required: [category, score]
+      properties:
+        category:
+          type: string
+        score:
+          type: number
+
+    ActivityEvent:
+      type: object
+      required: [id, type, description, xpEarned, createdAt]
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        description:
+          type: string
+        xpEarned:
+          type: integer
+        createdAt:
+          type: string
+        cityName:
+          type: ["string", "null"]
+        missionTitle:
+          type: ["string", "null"]
+
+    DailyChallenge:
+      type: object
+      required: [id, title, description, xpReward, coinReward, isCompleted, expiresAt, difficulty, language, starterCode, instructions]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        xpReward:
+          type: integer
+        coinReward:
+          type: integer
+        isCompleted:
+          type: boolean
+        expiresAt:
+          type: string
+        difficulty:
+          type: string
+        language:
+          type: string
+        starterCode:
+          type: string
+        instructions:
+          type: string
+
+    AiMessageInput:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+        context:
+          type: ["string", "null"]
+        missionId:
+          type: ["integer", "null"]
+        mode:
+          type: string
+
+    AiMessageResponse:
+      type: object
+      required: [id, message, role, createdAt]
+      properties:
+        id:
+          type: integer
+        message:
+          type: string
+        role:
+          type: string
+        createdAt:
+          type: string
+
+    AiChatMessage:
+      type: object
+      required: [id, message, role, createdAt]
+      properties:
+        id:
+          type: integer
+        message:
+          type: string
+        role:
+          type: string
+        createdAt:
+          type: string
+        missionId:
+          type: ["integer", "null"]
