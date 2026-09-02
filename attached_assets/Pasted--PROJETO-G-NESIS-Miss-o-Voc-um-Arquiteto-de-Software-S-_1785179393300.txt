@@ -1,0 +1,703 @@
+# PROJETO GÊNESIS
+
+## Missão
+
+Você é um Arquiteto de Software Sênior, Especialista em Inteligência Artificial, Neurociência da Aprendizagem, Gamificação, UX/UI, Engenharia de Software, Ciência Cognitiva e Desenvolvimento de Jogos.
+
+Sua missão é criar a plataforma de ensino de programação mais avançada do mundo.
+
+Não quero apenas um curso.
+
+Não quero apenas uma IDE.
+
+Não quero apenas um jogo.
+
+Quero criar um novo jeito de aprender programação.
+
+O objetivo é reduzir drasticamente o tempo de aprendizagem, tornando o estudo viciante, divertido, personalizado e extremamente eficiente.
+
+O aluno deve aprender muito mais rápido do que em cursos tradicionais, entendendo a lógica em profundidade e não apenas decorando código.
+
+---
+
+# Filosofia
+
+O Projeto Gênesis deve ensinar como um professor particular, motivar como um videogame, adaptar-se como uma IA e desenvolver como uma IDE profissional.
+
+O aluno nunca deve sentir que está estudando.
+
+Ele deve sentir que está explorando um mundo.
+
+Cada desafio deve gerar curiosidade.
+
+Cada erro deve virar uma oportunidade de aprendizado.
+
+Cada vitória deve dar sensação real de progresso.
+
+---
+
+# Objetivos
+
+Criar uma plataforma que ensine:
+
+* Lógica de Programação
+* Algoritmos
+* Estrutura de Dados
+* Programação Orientada a Objetos
+* Banco de Dados
+* SQL
+* APIs
+* Git
+* Docker
+* Cloud
+* Arquitetura de Software
+* Testes
+* DevOps
+* Inteligência Artificial
+* Machine Learning
+* Segurança
+* Desenvolvimento Web
+* Desenvolvimento Mobile
+* Desenvolvimento Desktop
+* Engenharia de Software
+* Clean Code
+* Design Patterns
+* Microserviços
+* Kubernetes
+* Engenharia de Prompt
+* Agentes de IA
+* Automação
+
+Tudo de forma progressiva.
+
+---
+
+# O diferencial
+
+A plataforma nunca ensina apenas sintaxe.
+
+Ela ensina raciocínio.
+
+Ela ensina pensamento computacional.
+
+Ela ensina resolução de problemas.
+
+Ela ensina como pensar como um programador.
+
+---
+
+# Mundo Interativo
+
+O aluno entra em um universo futurista.
+
+Existem cidades.
+
+Cada cidade representa um tema.
+
+Exemplos:
+
+Cidade das Variáveis
+
+Cidade dos Loops
+
+Cidade das Funções
+
+Cidade das Classes
+
+Cidade dos Objetos
+
+Cidade dos Bancos de Dados
+
+Cidade das APIs
+
+Cidade da IA
+
+Cidade da Segurança
+
+Cidade da Arquitetura
+
+Cidade DevOps
+
+Cidade Cloud
+
+Cidade Kubernetes
+
+Cada cidade possui:
+
+* NPCs
+* Missões
+* Chefes
+* Eventos
+* Segredos
+* Itens
+* Desafios
+
+---
+
+# Gamificação
+
+Criar um sistema completo de RPG.
+
+XP
+
+Níveis
+
+Árvore de habilidades
+
+Conquistas
+
+Títulos
+
+Itens
+
+Skins
+
+Mascotes
+
+Medalhas
+
+Rank Global
+
+Guildas
+
+Clãs
+
+Eventos Semanais
+
+Desafios Diários
+
+Missões Secretas
+
+Passe de Temporada
+
+Sistema de Recompensas
+
+---
+
+# IA Professor
+
+A IA deve ser capaz de:
+
+Explicar de formas diferentes.
+
+Explicar como se o aluno tivesse:
+
+8 anos
+
+12 anos
+
+18 anos
+
+Nível universitário
+
+Nível profissional
+
+Usar analogias.
+
+Criar desenhos.
+
+Criar animações.
+
+Criar histórias.
+
+Criar exemplos diferentes.
+
+Nunca repetir exatamente a mesma explicação.
+
+---
+
+# IA Mentor
+
+Nunca entregar respostas imediatamente.
+
+Primeiro:
+
+Dar uma dica.
+
+Depois outra.
+
+Depois outra.
+
+Somente no final mostrar a solução completa.
+
+Sempre explicar o motivo.
+
+---
+
+# IA Psicóloga da Aprendizagem
+
+Detectar:
+
+Desmotivação
+
+Cansaço
+
+Frustração
+
+Excesso de confiança
+
+Ansiedade
+
+Bloqueios
+
+Esquecimento
+
+E adaptar automaticamente o ritmo das atividades.
+
+---
+
+# Cérebro Digital
+
+Criar um mapa completo do conhecimento do aluno.
+
+Cada conceito será um nó.
+
+Exemplo:
+
+Variáveis
+
+↓
+
+Operadores
+
+↓
+
+Condições
+
+↓
+
+Loops
+
+↓
+
+Funções
+
+↓
+
+Objetos
+
+↓
+
+POO
+
+↓
+
+Banco de Dados
+
+↓
+
+APIs
+
+↓
+
+Arquitetura
+
+A IA sabe exatamente:
+
+O que o aluno domina.
+
+O que esqueceu.
+
+O que ainda não aprendeu.
+
+O que precisa revisar.
+
+Nunca aplicar desafios aleatórios.
+
+Tudo deve ser personalizado.
+
+---
+
+# Memória Inteligente
+
+Implementar repetição espaçada.
+
+Revisões automáticas.
+
+Flashcards.
+
+Quizzes rápidos.
+
+Desafios surpresa.
+
+Perguntas inesperadas.
+
+Sistema inspirado em aprendizado ativo.
+
+---
+
+# Editor Inteligente
+
+Criar uma IDE própria.
+
+Inspirada no VS Code.
+
+Com:
+
+Autocomplete
+
+Debug
+
+Terminal
+
+Console
+
+Visualização de Variáveis
+
+Visualização de Memória
+
+Execução Passo a Passo
+
+Explicação de cada linha.
+
+---
+
+# Sandbox
+
+Executar código de forma segura.
+
+Sem afetar o computador do usuário.
+
+Suporte para várias linguagens.
+
+---
+
+# Linguagens
+
+Python
+
+Java
+
+JavaScript
+
+TypeScript
+
+C#
+
+C++
+
+C
+
+Go
+
+Rust
+
+PHP
+
+Kotlin
+
+Swift
+
+SQL
+
+HTML
+
+CSS
+
+Lua
+
+R
+
+Outras futuramente.
+
+---
+
+# Aprendizagem por Projetos
+
+Em vez de apenas exercícios, construir projetos reais.
+
+Calculadora
+
+Agenda
+
+Sistema Bancário
+
+Chat
+
+Loja Virtual
+
+Dashboard
+
+API REST
+
+Rede Social
+
+IA
+
+Clone do WhatsApp
+
+Clone do Spotify
+
+Clone do YouTube
+
+Sistema ERP
+
+Sistema Hospitalar
+
+Sistema Financeiro
+
+Sistema Industrial
+
+Cada projeto dividido em pequenas missões.
+
+---
+
+# Simulador de Empresa
+
+O aluno começa como Estagiário.
+
+Depois:
+
+Júnior
+
+Pleno
+
+Sênior
+
+Especialista
+
+Tech Lead
+
+Arquiteto
+
+CTO
+
+Recebe tarefas reais.
+
+Prazos.
+
+Bugs.
+
+Reuniões simuladas.
+
+Pull Requests.
+
+Code Review.
+
+Deploy.
+
+Incidentes.
+
+Produção.
+
+---
+
+# IA Recrutadora
+
+Realizar entrevistas técnicas.
+
+Corrigir respostas.
+
+Gerar desafios.
+
+Avaliar comunicação.
+
+Criar provas.
+
+Preparar para empresas reais.
+
+---
+
+# Sistema Anti-Decoreba
+
+Nunca repetir exatamente os mesmos exercícios.
+
+Sempre mudar:
+
+Contexto
+
+História
+
+Nomes
+
+Problemas
+
+Objetivos
+
+O aluno aprende conceitos.
+
+Nunca decora respostas.
+
+---
+
+# Dashboard
+
+Mostrar:
+
+Precisão
+
+Tempo
+
+Velocidade
+
+Lógica
+
+Arquitetura
+
+POO
+
+Banco de Dados
+
+Git
+
+Docker
+
+Cloud
+
+IA
+
+Histórico
+
+Gráficos
+
+Mapa de Evolução
+
+Pontos fortes
+
+Pontos fracos
+
+---
+
+# Recursos Extras
+
+Modo Escuro.
+
+Modo Claro.
+
+Modo Offline.
+
+Modo Multiplayer.
+
+Modo Professor.
+
+Modo Empresa.
+
+Modo Competição.
+
+Modo Maratona.
+
+Modo Relax.
+
+Modo Revisão.
+
+Modo Desafio Diário.
+
+Modo Hardcore.
+
+Modo Speedrun.
+
+---
+
+# Acessibilidade
+
+Leitura por voz.
+
+Reconhecimento de voz.
+
+Comandos por voz.
+
+Alto contraste.
+
+Fonte adaptável.
+
+Legendas.
+
+Suporte para daltonismo.
+
+---
+
+# Comunidade
+
+Chat.
+
+Fórum.
+
+Sistema de dúvidas.
+
+Compartilhamento de projetos.
+
+Hackathons.
+
+Eventos.
+
+Ranking.
+
+Mentorias.
+
+---
+
+# Inteligência Artificial Avançada
+
+Criar agentes especializados:
+
+Professor.
+
+Mentor.
+
+Arquiteto.
+
+Debugger.
+
+Revisor de Código.
+
+Especialista em Banco de Dados.
+
+Especialista em Cloud.
+
+Especialista em IA.
+
+Especialista em Front-end.
+
+Especialista em Back-end.
+
+Especialista em Segurança.
+
+Todos trabalhando em conjunto.
+
+---
+
+# Tecnologia sugerida
+
+Frontend:
+Flutter
+
+Backend:
+Python + FastAPI
+
+Banco:
+PostgreSQL
+
+Cache:
+Redis
+
+Mensageria:
+RabbitMQ
+
+Busca:
+Elasticsearch
+
+IDE:
+Monaco Editor
+
+Execução:
+Docker Sandbox
+
+IA:
+OpenAI + modelos locais
+
+Observabilidade:
+Grafana + Prometheus
+
+---
+
+# Objetivo Final
+
+Quero que o Projeto Gênesis seja reconhecido como a melhor plataforma de ensino de programação do mundo.
+
+Quero que qualquer pessoa, mesmo sem experiência, consiga sair do zero e atingir nível profissional em muito menos tempo do que os métodos tradicionais.
+
+O sistema deve ser bonito, moderno, intuitivo, extremamente motivador e utilizar as melhores práticas de engenharia de software, experiência do usuário, inteligência artificial, ciência da aprendizagem e gamificação.
+
+Sempre proponha funcionalidades inovadoras. Não se limite ao que já existe no mercado. Sempre pense em recursos que façam o aluno dizer: "Nunca vi isso antes".
+
+Cada decisão de arquitetura deve priorizar escalabilidade, desempenho, modularidade, segurança, acessibilidade e uma experiência de aprendizado inesquecível.
